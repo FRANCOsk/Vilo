@@ -1,0 +1,13 @@
+<div>
+    <app-header></app-header>
+    <div class="search-results" 
+        infinite-scroll
+        (scrolled)="onScrollDown($event)" 
+        (scrolledUp)="onScrollUp($event)">
+        <mat-grid-list [cols]="columns" rowHeight="300px" (window:resize)="onResize($event)">
+            <mat-grid-tile *ngFor="let user of users">
+                <app-user-tile [userData]="user"></app-user-tile>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

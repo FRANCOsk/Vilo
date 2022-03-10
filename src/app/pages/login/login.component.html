@@ -1,0 +1,48 @@
+
+      
+<div class="okno">
+  <form [formGroup]="loginForm">
+    <p>
+      <mat-form-field appearance="fill" class="row">
+        <mat-label>Email</mat-label>
+        <input matInput required formControlName="email" />
+        <mat-error *ngIf="email?.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill" class="row">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'text' : 'password'"
+          formControlName="password"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </mat-form-field>
+    </p>
+    <div *ngIf="showError" class="mb-4">Email or password is invalid.</div>
+
+    <div style="margin-left: 200px; margin-bottom: 30px;">
+    <button
+      mat-icon-button
+      color="primary"
+      (click)="login()"
+      
+    >
+      Login
+    </button>
+
+    <button
+      mat-icon-button
+      color="primary"
+      (click)="cancel()"
+      
+    >
+      Cancel
+    </button>
+  </div>
+  </form>
+</div>
+

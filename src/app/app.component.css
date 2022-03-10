@@ -1,8 +1,1 @@
-.test {
-
-background-color: aquamarine;
-text-align: center;
-width: auto;
-height: 600px;
-
-}
+@import "~bootstrap/dist/css/bootstrap.css"
