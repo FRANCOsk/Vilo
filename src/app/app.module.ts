@@ -44,3 +44,4 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
