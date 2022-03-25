@@ -1,7 +1,5 @@
-
-      
-<div class="okno">
-  <form [formGroup]="loginForm">
+<div class="row">
+  <form [formGroup]="loginForm" class="col-6 okno" style="width: 500px">
     <p>
       <mat-form-field appearance="fill" class="row">
         <mat-label>Email</mat-label>
@@ -24,25 +22,26 @@
     </p>
     <div *ngIf="showError" class="mb-4">Email or password is invalid.</div>
 
-    <div style="margin-left: 200px; margin-bottom: 30px;">
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="login()"
-      
-    >
-      Login
-    </button>
+    <div style="margin-left: 200px; margin-bottom: 30px">
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
 
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="cancel()"
-      
-    >
-      Cancel
-    </button>
-  </div>
+      <button mat-raised-button color="primary" (click)="cancel()">
+        Cancel
+      </button>
+
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Open
+      </button>
+    </div>
   </form>
-</div>
 
+  <div class="col-6">
+    <iframe id="video1"  src="https://">
+
+
+
+    </iframe>
+    <br />
+    
+  </div>
+</div>

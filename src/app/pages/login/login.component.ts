@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
+import { OpenDialogComponent } from '../open-dialog/open-dialog.component';
+
 
 @Component({
   selector: 'app-login',
@@ -15,11 +18,13 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   public showError: boolean;
+ 
 
   constructor(
     private tokenService: TokenService,
     private http: HttpClient,
-    private router: Router) {
+    private router: Router,
+    public dialog: MatDialog) {
       this.showError = false;
      }
 
@@ -37,6 +42,21 @@ export class LoginComponent implements OnInit {
    this.loginForm.reset(); 
    
  }
+
+
+ 
+
+   public openDialog() {
+
+    const dialogRef = this.dialog.open(OpenDialogComponent, {width:"200px", height:"200px", data: this.loginForm.value.email });
+    dialogRef.afterClosed().subscribe(()=>console.log("Dialog was closed"));
+
+       
+   }
+
+
+
+
 
   public login(): void {
     this.loginForm.markAllAsTouched();

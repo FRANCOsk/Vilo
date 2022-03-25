@@ -9,12 +9,14 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { UserTileComponent } from './pages/user-tile/user-tile.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { MatFormFieldModule, MatInputModule, MatIconModule, MatGridListModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatIconModule, MatGridListModule, MatButtonModule, MatDialog, MatDialogModule } from '@angular/material';
 import { HeaderComponent } from './pages/header/header.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientInterceptor } from './services/http-client-interceptor.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { DialogComponent } from './dialog/dialog.component';
+import { OpenDialogComponent } from './pages/open-dialog/open-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UserDetailComponent,
     UserTileComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogComponent,
+    OpenDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatGridListModule,
     InfiniteScrollModule,
@@ -41,7 +46,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[OpenDialogComponent]
 })
 export class AppModule { }
 
