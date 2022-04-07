@@ -1,7 +1,23 @@
-<div>
-<p>This is dialog</p> 
+<div class="open">
+  <p>Our video</p>
 
-<p>Email: {{data}} </p>
-<button mat-raised-button (click)="close()">Close</button>
+  <iframe
+    width="500"
+    height="200"
+    src=""
+    title="video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 
+  <p>Email: {{ data }}</p>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="close()"
+    style="float: right; top: -30px; padding: 0px; margin-right: 15px"
+  >
+    Close
+  </button>
 </div>
