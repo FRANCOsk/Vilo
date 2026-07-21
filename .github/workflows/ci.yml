@@ -31,18 +31,7 @@ jobs:
         run: npm test -- --watch=false --browsers=ChromeHeadless --include=src/app/app.component.spec.ts
 
       - name: Build production bundle
-        shell: bash
         run: npm run build -- --prod
 
       - name: Audit production dependencies
-        shell: bash
-        run: npm audit --omit=dev --audit-level=critical > audit.log 2>&1
-
-      - name: Upload audit diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: production-audit-log
-          path: audit.log
-          if-no-files-found: ignore
-          retention-days: 1
+        run: npm audit --production --audit-level=critical
