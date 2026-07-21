@@ -1,27 +1,35 @@
-# Login
+# Vilo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Legacy Angular 8 application containing the original Vilo user-interface prototype.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Node.js 12.x
+- npm 6.x
 
-## Code scaffolding
+The project uses an older Angular toolchain. Keep dependency upgrades incremental and test each Angular major version separately.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Local development
 
-## Build
+```bash
+npm ci
+npm start
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The development server is available at `http://localhost:4200`.
 
-## Running unit tests
+## Quality checks
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm test -- --watch=false --browsers=ChromeHeadless
+npm run build -- --prod
+npm audit --omit=dev --audit-level=critical
+```
 
-## Running end-to-end tests
+GitHub Actions runs installation, unit tests, a production build and a critical production-dependency audit for every pull request and push to `main`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Maintenance notes
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Do not commit generated `dist/` or `node_modules/` content.
+- Keep application dependencies separate from Angular CLI and test tooling.
+- Replace Protractor and TSLint during a future Angular migration; both are obsolete in modern Angular projects.
