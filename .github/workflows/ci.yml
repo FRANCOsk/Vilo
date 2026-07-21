@@ -31,7 +31,14 @@ jobs:
         run: npm test -- --watch=false --browsers=ChromeHeadless --include=src/app/app.component.spec.ts
 
       - name: Build production bundle
-        run: npm run build -- --prod
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build -- --prod > build.log 2>&1 || {
+            tail -n 160 build.log
+            exit 1
+          }
+          tail -n 40 build.log
 
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=critical
