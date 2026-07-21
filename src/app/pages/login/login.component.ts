@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { of } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { MatDialog } from "@angular/material";
 import { OpenDialogComponent } from "../open-dialog/open-dialog.component";
 
@@ -16,6 +16,7 @@ import { OpenDialogComponent } from "../open-dialog/open-dialog.component";
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public showError: boolean;
+  public hide = true;
 
   constructor(
     private tokenService: TokenService,
@@ -34,6 +35,20 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl("", Validators.required),
     });
+  }
+
+  public get email(): FormControl {
+    return this.loginForm.get("email") as FormControl;
+  }
+
+  public getErrorMessage(): string {
+    if (!this.email) {
+      return "";
+    }
+    if (this.email.hasError("required")) {
+      return "Email is required";
+    }
+    return this.email.hasError("pattern") ? "Enter a valid email address" : "";
   }
 
   public cancel(): void {
